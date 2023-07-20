@@ -29,11 +29,24 @@ public class E1_ChargeState : ChargeState
     {
         base.LogicUpdate();
 
+        if (_performShortRangeAction)
+        {
+            stateMachine.ChangeState(enemy.meleeAttackState);
+        }
+        else if (!_isDetectingLedge || _isDetectingWall)
+        {
+            stateMachine.ChangeState(enemy.lookForPlayerState);
+        }
+
         if(_isChargeTimeOver)
         {
             if(_isPlayerInMinAgroRange)
             {
                 stateMachine.ChangeState(enemy.playerDetectedState);
+            }
+            else
+            {
+                stateMachine.ChangeState(enemy.lookForPlayerState);
             }
         }
     }

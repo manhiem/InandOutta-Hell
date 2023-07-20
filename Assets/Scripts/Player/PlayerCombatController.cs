@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerCombatController : MonoBehaviour
 {
+    // Remove Later
+    private AttackDetails attackDetails;
+
+    // Remove above part
+
     [SerializeField]
     private bool combatEnabled;
     [SerializeField]
@@ -12,6 +17,8 @@ public class PlayerCombatController : MonoBehaviour
     private Transform attack1HitBox;
     [SerializeField]
     private LayerMask whatIsDamagable;
+    [SerializeField]
+    private float _stunDamageAmount = 1f;
 
     private bool _gotInput, _isAttacking, _firstAttack = false;
     private float _lastInputTime = Mathf.NegativeInfinity;
@@ -67,9 +74,13 @@ public class PlayerCombatController : MonoBehaviour
     {
         Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(attack1HitBox.position, attack1Radius, whatIsDamagable);
 
+        attackDetails.damageAmount = 20;
+        attackDetails.position = attack1HitBox.position;
+        attackDetails.stunDamageAmount = _stunDamageAmount;
+
         foreach (Collider2D collider in detectedObjects)
         {
-            collider.transform.parent.SendMessage("Damage", attack1Damage);
+            collider.transform.parent.SendMessage("Damage", attackDetails);
             // Instantiate Hit Particle
         }
     }
@@ -85,4 +96,9 @@ public class PlayerCombatController : MonoBehaviour
     {
         Gizmos.DrawWireSphere(attack1HitBox.position, attack1Radius);
     }
+
+    public void damage(float damage)
+    {
+        Debug.LogError("Got hit by: " + damage);
+    } 
 }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: E1_ChargeStateData
   m_EditorClassIdentifier: 
   _chargeSpeed: 6
-  _chargetime: 2
+  _chargetime: 1.5

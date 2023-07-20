@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: E1_BaseData
   m_EditorClassIdentifier: 
   _wallCheckDistance: 0.2
-  _ledgeCheckDistance: 0.4
+  _ledgeCheckDistance: 1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -22,3 +22,10 @@ MonoBehaviour:
     m_Bits: 1024
   _maxAgroDistance: 4
   _minAgroDistance: 3
+  _closeRangeActionDistance: 1
+  _maxHealth: 120
+  _damageHopSpeed: 10
+  _groundCheckRadius: 0.3
+  _stunResistance: 3
+  _stunRecoveryTime: 2
+  hitParticle: {fileID: 4676100584005117769, guid: 70bfa70896e69a848ac9840b3e4e64c0, type: 3}
