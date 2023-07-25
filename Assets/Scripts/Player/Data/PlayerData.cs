@@ -31,4 +31,19 @@ public class PlayerData : ScriptableObject
     public float _wallJumpVelocity = 20f;
     public float _wallJumpTime = 0.4f;
     public Vector2 _wallJumpAngle = new Vector2(1, 2);
+
+    [Header("Ledge Climb State")]
+    public Vector2 _startOffset;
+    public Vector2 _stopOffset;
+
+    [Header("Dash State")]
+    public float _dashCoolDown = 0.5f;
+    public float _maxHoldTime = 1f;
+    public float _holdTimeScale = 0.25f;
+    public float _dashTime = 0.2f;
+    public float _dashVelocity = 30f;
+    public float _drag = 10f;
+    public float _dashEndYMultiplier = 0.2f;
+    public float _distanceBetweenAfterImages = 0.5f;
+
 }

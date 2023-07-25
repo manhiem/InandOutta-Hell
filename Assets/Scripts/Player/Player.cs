@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     public PlayerWallGrabState wallGrabState { get; private set; }
     public PlayerWallClimbState wallClimbState { get; private set;}
     public PlayerWallJumpState wallJumpState { get; private set; }
+    public PlayerLedgeClimbState ledgeClimbState { get; private set; }
+    public PlayerDashState dashState { get; private set; }
 
     [SerializeField]
     private PlayerData playerData;
@@ -24,6 +26,7 @@ public class Player : MonoBehaviour
     public Animator _anim { get; private set; }
     public PlayerInputHandler inputHandler { get; private set; }
     public Rigidbody2D rb { get; private set; }
+    public Transform dashDirectionIndicator { get; private set; }
     #endregion
 
     #region Check Transforms
@@ -32,6 +35,8 @@ public class Player : MonoBehaviour
     private Transform groundCheck;
     [SerializeField]
     private Transform wallCheck;
+    [SerializeField]
+    private Transform ledgeCheck;
 
     #endregion
 
@@ -59,6 +64,8 @@ public class Player : MonoBehaviour
         wallGrabState = new PlayerWallGrabState(this, StateMachine, playerData, "Wall Grab");
         wallClimbState = new PlayerWallClimbState(this, StateMachine, playerData, "Wall Climb");
         wallJumpState = new PlayerWallJumpState(this, StateMachine, playerData, "InAir");
+        ledgeClimbState = new PlayerLedgeClimbState(this, StateMachine, playerData, "Ledge Climb State");
+        dashState = new PlayerDashState(this, StateMachine, playerData, "InAir");
     }
 
     private void Start()
@@ -68,6 +75,8 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         StateMachine.Initialize(idleState);
         _facingDirection = 1;
+
+        dashDirectionIndicator = transform.Find("Dash Direction Indicator");
     }
 
     private void Update()
@@ -105,6 +114,19 @@ public class Player : MonoBehaviour
         _curVelocity = _velocityWorkspace;
     }
 
+    public void SetVelocity0()
+    {
+        rb.velocity = Vector2.zero;
+        _curVelocity = Vector2.zero;
+    }
+
+    public void SetVelocity(float velocity, Vector2 direction)
+    {
+        _velocityWorkspace = velocity * direction;
+        rb.velocity = _velocityWorkspace;
+        _curVelocity = _velocityWorkspace;
+    }
+
     #endregion
 
     #region Check Functions
@@ -120,6 +142,11 @@ public class Player : MonoBehaviour
         {
             Flip();
         }
+    }
+
+    public bool CheckIfTouchingLedge()
+    {
+        return Physics2D.Raycast(ledgeCheck.position, Vector2.right * _facingDirection, playerData._wallCheckDistance, playerData.whatIsGround);
     }
 
     public bool CheckIfTouchingWall()
@@ -149,6 +176,19 @@ public class Player : MonoBehaviour
     {
         _facingDirection *= -1;
         transform.Rotate(0.0f, 180f, 0.0f);
+    }
+
+    public Vector2 DetermineCornerPosition()
+    {
+        RaycastHit2D xHit = Physics2D.Raycast(wallCheck.position, Vector2.right * _facingDirection, playerData._wallCheckDistance, playerData.whatIsGround);
+        float xDistance = xHit.distance;
+        _velocityWorkspace.Set(xDistance * _facingDirection, 0);
+
+        RaycastHit2D yHit = Physics2D.Raycast(ledgeCheck.position + (Vector3)_velocityWorkspace, Vector2.down, ledgeCheck.position.y - wallCheck.position.y, playerData.whatIsGround);
+        float yDistance = yHit.distance;
+
+        _velocityWorkspace.Set(wallCheck.position.x + (xDistance *  _facingDirection), ledgeCheck.position.y - yDistance);
+        return _velocityWorkspace;
     }
     #endregion
 }

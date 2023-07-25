@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerGroundedState : PlayerState
 {
     protected int _xInput;
-
+    protected bool _dashInput;
+    private bool _grabInput;
     private bool _jumpInput;
+
     private bool _isGrounded;
     private bool _isTouchingWall;
-    private bool _grabInput;
+    private bool _isTouchingLedge;
     public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
@@ -20,12 +22,14 @@ public class PlayerGroundedState : PlayerState
 
         _isGrounded = player.CheckIfGrounded();
         _isTouchingWall = player.CheckIfTouchingWall();
+        _isTouchingLedge = player.CheckIfTouchingLedge();
     }
 
     public override void Enter()
     {
         base.Enter();
         player.jumpState.ResetAmountOfJumps();
+        player.dashState.ResetCanDash();
     }
 
     public override void Exit()
@@ -40,8 +44,9 @@ public class PlayerGroundedState : PlayerState
         _xInput = player.inputHandler._normalizedInputX;
         _jumpInput = player.inputHandler._jumpInput;
         _grabInput = player.inputHandler._grabInput;
+        _dashInput = player.inputHandler._dashInput;
 
-        if(_jumpInput && player.jumpState.CanJump())
+        if (_jumpInput && player.jumpState.CanJump())
         {
             stateMachine.ChangeState(player.jumpState);
         }
@@ -50,9 +55,13 @@ public class PlayerGroundedState : PlayerState
             player.airState.StartCoyoteTime();
             stateMachine.ChangeState(player.airState);
         }
-        else if(_isTouchingWall && _grabInput)
+        else if(_isTouchingWall && _grabInput && _isTouchingLedge)
         {
             stateMachine.ChangeState(player.wallGrabState);
+        }
+        else if (_dashInput && player.dashState.CheckIfCanDash())
+        {
+            stateMachine.ChangeState(player.dashState);
         }
     }
 

@@ -15,7 +15,17 @@ MonoBehaviour:
   _moveSpeed: 10
   _jumpVelocity: 15
   _amountOfJumps: 2
+  _coyoteTime: 0.2
+  _jumpHeightMultiplier: 0.5
   _groundCheckRadius: 0.3
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  _wallCheckDistance: 0.5
+  _wallSlideVelocity: 3
+  _wallClimbVelocity: 3
+  _wallJumpVelocity: 20
+  _wallJumpTime: 0.4
+  _wallJumpAngle: {x: 0.3, y: 0.3}
+  _startOffset: {x: 0.5, y: 0.3}
+  _stopOffset: {x: 1, y: 1}
