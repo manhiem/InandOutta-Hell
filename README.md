@@ -1,4 +1,4 @@
-# InandOutta-Hell
+<img width="617" alt="image" src="https://github.com/manhiem/InandOutta-Hell/assets/59243227/9be0ec7e-d4ff-49b4-a8a3-a406a25af0a3"># InandOutta-Hell
 A 2D Unity Platformer built using Finite State Machine (still under development)
 
 ## Current Progress Update
@@ -15,4 +15,4 @@ Here are some of the game development gems I've picked up along the way:
 I can't wait to share the full version of the game, complete with GitHub and itch.io playable links, in the upcoming days. Stay tuned for an adventure you won't want to miss! 🚀💫
 
 ### Temporary Video Showcasing the GamePlay
-![Gameplay Video](https://github.com/manhiem/InandOutta-Hell/blob/main/Videos/GamePlay.mp4)
+https://youtu.be/k4qwUpfqUOw
