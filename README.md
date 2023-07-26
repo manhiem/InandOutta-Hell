@@ -1,4 +1,6 @@
-<img width="617" alt="image" src="https://github.com/manhiem/InandOutta-Hell/assets/59243227/9be0ec7e-d4ff-49b4-a8a3-a406a25af0a3"># InandOutta-Hell
+<img width="617" alt="image" src="https://github.com/manhiem/InandOutta-Hell/assets/59243227/9be0ec7e-d4ff-49b4-a8a3-a406a25af0a3">
+
+# InandOutta-Hell
 A 2D Unity Platformer built using Finite State Machine (still under development)
 
 ## Current Progress Update
