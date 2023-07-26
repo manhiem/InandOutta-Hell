@@ -15,4 +15,4 @@ Here are some of the game development gems I've picked up along the way:
 I can't wait to share the full version of the game, complete with GitHub and itch.io playable links, in the upcoming days. Stay tuned for an adventure you won't want to miss! 🚀💫
 
 ### Temporary Video Showcasing the GamePlay
-[https://github.com/manhiem/InandOutta-Hell/blob/main/Videos/GamePlay.mp4]
+![Gameplay Video](https://github.com/manhiem/InandOutta-Hell/blob/main/Videos/GamePlay.mp4)
