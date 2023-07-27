@@ -17,3 +17,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   attackDamage: 10
+  _knockbackangle: {x: 1, y: 2}
+  _knockbackStrength: 3

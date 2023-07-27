@@ -13,6 +13,7 @@ public class CombatTestDummy : MonoBehaviour, Idamagable
     {
         Instantiate(_hitParticles, transform.position, Quaternion.Euler(0f, 0f,  Random.Range(0f, 360f)));
         _anim.SetTrigger("Damage");
+        Destroy(gameObject);
         Debug.Log(amount + " damage taken");
     }
 

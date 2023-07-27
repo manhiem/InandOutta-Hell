@@ -16,9 +16,15 @@ MonoBehaviour:
   - attackName: Left Slash
     _movementSpeed: 0
     _damageAmount: 10
+    _knockbackStrength: 10
+    _knockbackAngle: {x: 1, y: 2}
   - attackName: Double Slash
     _movementSpeed: 0
     _damageAmount: 15
+    _knockbackStrength: 5
+    _knockbackAngle: {x: 1, y: 1}
   - attackName: Slash Combo
     _movementSpeed: 0
     _damageAmount: 20
+    _knockbackStrength: 7
+    _knockbackAngle: {x: 1, y: 2}

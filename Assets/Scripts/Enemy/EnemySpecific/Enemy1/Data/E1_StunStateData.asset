@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155f9f103d1b519488725b1f1ac63eb1, type: 3}
   m_Name: E1_StunStateData
   m_EditorClassIdentifier: 
-  _stunTime: 0.4
-  _stunKnockBackTime: 0.2
+  _stunTime: 1
+  _stunKnockBackTime: 0.5
   _stunKnockBackAngle: {x: 1, y: 2}
   _stunKnockBackSpeed: 8

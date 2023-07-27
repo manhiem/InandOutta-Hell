@@ -44,35 +44,6 @@ public class CombatDummyController : MonoBehaviour
         CheckKnockBack();
     }
 
-    public void Damage(AttackDetails damage)
-    {
-        _curHealth -= damage.damageAmount;
-        _playerFacingDirection = _PC.GetFacingDirection();
-        Instantiate(_hitParticle, aliveGO.transform.position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
-
-        if(_playerFacingDirection == 1)
-        {
-            _playerOnLeft = true;
-        }
-        else
-        {
-            _playerOnLeft = false;
-        }
-
-        _botAim.SetBool("PlayerOnLeft", _playerOnLeft);
-        _botAim.SetTrigger("Damage");
-        if(_applyKnockBack && _curHealth >= 0.0f)
-        {
-            // Apply knockback
-            KnockBack();
-        }
-
-        if(_curHealth < 0.0f)
-        {
-            Die();
-        }
-    }
-
     private void KnockBack()
     {
         _knockback = true;

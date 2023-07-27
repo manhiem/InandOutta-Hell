@@ -6,6 +6,7 @@ public class Movement : CoreComponent
 {
     public Rigidbody2D rb { get; private set; }
     public int _facingDirection {  get; private set; }
+    public bool _canSetVelocity { get; set; }
     public Vector2 _curVelocity {  get; private set; }
     private Vector2 _velocityWorkspace;
     #region Set Functions
@@ -13,10 +14,11 @@ public class Movement : CoreComponent
     {
         base.Awake();
         _facingDirection = 1;
+        _canSetVelocity = true;
         rb = GetComponentInParent<Rigidbody2D>();
     }
 
-    public void LogicUpdate()
+    public override void LogicUpdate()
     {
         _curVelocity = rb.velocity;
     }
@@ -24,39 +26,44 @@ public class Movement : CoreComponent
     public void SetVelocityX(float velocity)
     {
         _velocityWorkspace.Set(velocity, _curVelocity.y);
-        rb.velocity = _velocityWorkspace;
-        _curVelocity = _velocityWorkspace;
+        SetFinalVelocity();
     }
 
     public void SetVelocityY(float velocity)
     {
         _velocityWorkspace.Set(_curVelocity.x, velocity);
-        rb.velocity = _velocityWorkspace;
-        _curVelocity = _velocityWorkspace;
+        SetFinalVelocity();
     }
 
     public void SetVelocity(float velocity, Vector2 angle, int _direction)
     {
         angle.Normalize();
         _velocityWorkspace.Set(angle.x * velocity * _direction, angle.y * velocity);
-        rb.velocity = _velocityWorkspace;
-        _curVelocity = _velocityWorkspace;
+        SetFinalVelocity();
     }
 
     public void SetVelocity0()
     {
-        rb.velocity = Vector2.zero;
-        _curVelocity = Vector2.zero;
+        _velocityWorkspace = Vector2.zero;
+        SetFinalVelocity();
     }
 
     public void SetVelocity(float velocity, Vector2 direction)
     {
         _velocityWorkspace = velocity * direction;
-        rb.velocity = _velocityWorkspace;
-        _curVelocity = _velocityWorkspace;
+        SetFinalVelocity();
     }
 
-    private void Flip()
+    private void SetFinalVelocity ()
+    {
+        if(_canSetVelocity)
+        {
+            rb.velocity = _velocityWorkspace;
+            _curVelocity = _velocityWorkspace;
+        }
+    }
+
+    public void Flip()
     {
         _facingDirection *= -1;
         rb.transform.Rotate(0.0f, 180f, 0.0f);

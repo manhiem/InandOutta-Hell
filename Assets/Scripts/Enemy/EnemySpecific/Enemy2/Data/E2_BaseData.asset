@@ -20,8 +20,8 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 1024
-  _maxAgroDistance: 15
-  _minAgroDistance: 10
+  _maxAgroDistance: 8
+  _minAgroDistance: 6
   _closeRangeActionDistance: 1.3
   _maxHealth: 120
   _damageHopSpeed: 10

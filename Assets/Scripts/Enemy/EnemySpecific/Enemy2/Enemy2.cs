@@ -38,9 +38,9 @@ public class Enemy2 : Entity
     [SerializeField]
     private Transform rangedAttackPosition;
 
-    public override void Start()
+    public override void Awake()
     {
-        base.Start();
+        base.Awake();
         moveState = new E2_MoveState(this, stateMachine, "Move", moveStateData, this);
         idleState = new E2_IdleState(this, stateMachine, "Idle", idleStateData, this);
         playerDetectedState = new E2_PlayerDetectedState(this, stateMachine, "Player Detected", playerDetectedStateData, this);
@@ -51,30 +51,11 @@ public class Enemy2 : Entity
         dodgeState = new E2_DodgeState(this, stateMachine, "Dodge", dodgeStateData, this);
         rangedAttackState = new E2_RangedAttackState(this, stateMachine, "Ranged Attack", rangedAttackPosition, rangedAttackStateData, this);
 
-        stateMachine.Initialize(moveState);
     }
 
-    public override void Damage(AttackDetails attackDetails)
+    private void Start()
     {
-        base.Damage(attackDetails);
-
-        if(_isDead)
-        {
-            stateMachine.ChangeState(deadState);
-        }
-        else if(_isStunned && stateMachine.currentState!=stunState)
-        {
-            stateMachine.ChangeState(stunState);
-        }
-        else if(CheckPlayerInMinAgroRange())
-        {
-            stateMachine.ChangeState(rangedAttackState);
-        }
-        else if(!CheckPlayerInMinAgroRange())
-        {
-            lookForPlayerState.SetTurnImmediately(true);
-            stateMachine.ChangeState(lookForPlayerState);
-        }
+        stateMachine.Initialize(moveState);
     }
 
     public override void OnDrawGizmos()

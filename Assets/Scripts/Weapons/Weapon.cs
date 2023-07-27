@@ -7,6 +7,8 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     protected SO_WeaponData _weaponData;
 
+    protected Core _core;
+
     [SerializeField]
     private Animator _baseAnimator;
     [SerializeField]
@@ -45,9 +47,10 @@ public class Weapon : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void InitializeWeapon(PlayerAttackState state)
+    public void InitializeWeapon(PlayerAttackState state, Core core)
     {
         _state = state;
+        _core = core;
     }
 
     #region Animation Triggers

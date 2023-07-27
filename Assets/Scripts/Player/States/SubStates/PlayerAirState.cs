@@ -39,7 +39,7 @@ public class PlayerAirState : PlayerState
         _isGrounded = player._core._collisionSenses.Grounded;
         _isTouchingWall = player._core._collisionSenses.WallFront;
         _isTouchingWallBack = player._core._collisionSenses.WallBack;
-        _isTouchingLedge = player._core._collisionSenses.Ledge;
+        _isTouchingLedge = player._core._collisionSenses.LedgeHorizontal;
 
         if(_isTouchingWall && !_isTouchingLedge)
         {

@@ -19,8 +19,8 @@ public class ChargeState : State
     {
         base.DoChecks();
         _isPlayerInMinAgroRange = entity.CheckPlayerInMinAgroRange();
-        _isDetectingLedge = entity.CheckLedge();
-        _isDetectingWall = entity.CheckWall();
+        _isDetectingLedge = core._collisionSenses.LedgeVertical;
+        _isDetectingWall = core._collisionSenses.WallFront;
         _isChargeTimeOver = false;
 
         _performShortRangeAction = entity.CheckPlayerInCloseRangeAction();
@@ -30,7 +30,7 @@ public class ChargeState : State
     {
         base.Enter();
 
-        entity.SetVelocity(stateData._chargeSpeed);
+        core._movement.SetVelocityX(stateData._chargeSpeed * core._movement._facingDirection);
     }
 
     public override void Exit()
@@ -41,7 +41,8 @@ public class ChargeState : State
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if(Time.time >= startTime + stateData._chargetime)
+        core._movement.SetVelocityX(stateData._chargeSpeed * core._movement._facingDirection);
+        if (Time.time >= startTime + stateData._chargetime)
         {
             _isChargeTimeOver = true;
         }
