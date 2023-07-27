@@ -8,6 +8,19 @@ public class PlayerLandState : PlayerGroundedState
     {
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+        player._jumpParticles.gameObject.SetActive(true);
+        player._jumpParticles.Stop();
+        player._jumpParticles.Play();
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+    }
+
     public override void LogicUpdate()
     {
         base.LogicUpdate();

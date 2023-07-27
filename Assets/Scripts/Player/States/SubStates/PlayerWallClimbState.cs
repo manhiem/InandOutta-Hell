@@ -14,7 +14,7 @@ public class PlayerWallClimbState : PlayerTouchingWallState
 
         if (!_isExitingState)
         {
-            player.SetVelocityY(playerData._wallClimbVelocity);
+            _core._movement.SetVelocityY(playerData._wallClimbVelocity);
 
             if (_yInput != 1)
             {

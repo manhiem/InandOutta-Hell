@@ -20,9 +20,9 @@ public class PlayerGroundedState : PlayerState
     {
         base.DoChecks();
 
-        _isGrounded = player.CheckIfGrounded();
-        _isTouchingWall = player.CheckIfTouchingWall();
-        _isTouchingLedge = player.CheckIfTouchingLedge();
+        _isGrounded = player._core._collisionSenses.Grounded;
+        _isTouchingWall = player._core._collisionSenses.WallFront;
+        _isTouchingLedge = player._core._collisionSenses.Ledge;
     }
 
     public override void Enter()
@@ -46,7 +46,15 @@ public class PlayerGroundedState : PlayerState
         _grabInput = player.inputHandler._grabInput;
         _dashInput = player.inputHandler._dashInput;
 
-        if (_jumpInput && player.jumpState.CanJump())
+        if (player.inputHandler._attackInputs[(int)CombatInputs.primary])
+        {
+            stateMachine.ChangeState(player.primaryAttackState);
+        }
+        else if (player.inputHandler._attackInputs[(int)CombatInputs.secondary])
+        {
+            stateMachine.ChangeState(player.secondaryAttackState);
+        }
+        else if (_jumpInput && player.jumpState.CanJump())
         {
             stateMachine.ChangeState(player.jumpState);
         }

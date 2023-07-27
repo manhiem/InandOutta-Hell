@@ -21,13 +21,15 @@ public class PlayerMoveState : PlayerGroundedState
     public override void Exit()
     {
         base.Exit();
+        player.dustEmmission.rateOverTime = 0f;
     }
 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        player.CheckIfShouldFlip(_xInput);
-        player.SetVelocityX(playerData._moveSpeed * _xInput);
+        _core._movement.CheckIfShouldFlip(_xInput);
+        _core._movement.SetVelocityX(playerData._moveSpeed * _xInput);
+        player.dustEmmission.rateOverTime = 35f;
         if(_xInput == 0 && !_isExitingState)
         {
             stateMachine.ChangeState(player.idleState);

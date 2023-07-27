@@ -55,7 +55,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2329109768802774079}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.89, y: -1.86, z: -0.67114234}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -259,8 +259,8 @@ GameObject:
   - component: {fileID: 2329109770369739782}
   - component: {fileID: 2329109770369739777}
   - component: {fileID: 2329109770369739780}
-  - component: {fileID: 2329109770369739783}
   - component: {fileID: 2329109770369739781}
+  - component: {fileID: 606077207}
   m_Layer: 8
   m_Name: Alive
   m_TagString: Enemy
@@ -377,37 +377,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 8
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 796057df9ac91b9448a603c50bd42449, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &2329109770369739783
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2329109770369739779}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 796057df9ac91b9448a603c50bd42449, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.042060733, y: -0.2804045}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.78125, y: 2}
-    newSize: {x: 1.78125, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.7063662, y: 1.2522546}
-  m_EdgeRadius: 0
 --- !u!114 &2329109770369739781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,3 +394,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b567c4207bb4e6448cdbc9e012f0fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!70 &606077207
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2329109770369739779}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.65, y: 1.81}
+  m_Direction: 0

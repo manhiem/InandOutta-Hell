@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 10
   _jumpVelocity: 15
-  _amountOfJumps: 2
+  _amountOfJumps: 4
   _coyoteTime: 0.2
   _jumpHeightMultiplier: 0.5
   _groundCheckRadius: 0.3
@@ -29,3 +29,11 @@ MonoBehaviour:
   _wallJumpAngle: {x: 0.3, y: 0.3}
   _startOffset: {x: 0.5, y: 0.3}
   _stopOffset: {x: 1, y: 1}
+  _dashCoolDown: 0.5
+  _maxHoldTime: 1
+  _holdTimeScale: 0.25
+  _dashTime: 0.2
+  _dashVelocity: 30
+  _drag: 10
+  _dashEndYMultiplier: 0.2
+  _distanceBetweenAfterImages: 0.5

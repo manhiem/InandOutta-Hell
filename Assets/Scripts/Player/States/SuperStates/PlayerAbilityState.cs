@@ -14,7 +14,7 @@ public class PlayerAbilityState : PlayerState
     {
         base.DoChecks();
 
-        _isGrounded = player.CheckIfGrounded();
+        _isGrounded = _core._collisionSenses.Grounded;
     }
 
     public override void Enter()
@@ -34,7 +34,7 @@ public class PlayerAbilityState : PlayerState
 
         if (_isAbilityDone)
         {
-            if(_isGrounded && player._curVelocity.y < 0.01f)
+            if(_isGrounded && _core._movement._curVelocity.y < 0.01f)
             {
                 stateMachine.ChangeState(player.idleState);
             }

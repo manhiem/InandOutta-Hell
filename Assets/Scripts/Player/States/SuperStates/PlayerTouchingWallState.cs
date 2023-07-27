@@ -28,9 +28,9 @@ public class PlayerTouchingWallState : PlayerState
     public override void DoChecks()
     {
         base.DoChecks();
-        _isGrounded = player.CheckIfGrounded();
-        _isTouchingWall = player.CheckIfTouchingWall();
-        _isTouchingLedge = player.CheckIfTouchingLedge();
+        _isGrounded = player._core._collisionSenses.Grounded;
+        _isTouchingWall = player._core._collisionSenses.WallFront;
+        _isTouchingLedge = player._core._collisionSenses.Ledge;
 
         if(_isTouchingWall && !_isTouchingLedge)
         {
@@ -66,7 +66,7 @@ public class PlayerTouchingWallState : PlayerState
         {
             stateMachine.ChangeState(player.idleState);
         }
-        else if(!_isTouchingWall || (_xInput!=player._facingDirection && !_grabInput))
+        else if(!_isTouchingWall || (_xInput!=_core._movement._facingDirection && !_grabInput))
         {
             stateMachine.ChangeState(player.airState);
         }
