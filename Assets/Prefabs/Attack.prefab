@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4031538560658974934}
   - component: {fileID: 4031538560658974935}
   - component: {fileID: 4031538560658974936}
-  - component: {fileID: 4031538560658974933}
+  - component: {fileID: 2534462406276250580}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -139,7 +139,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &4031538560658974933
+--- !u!114 &2534462406276250580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,10 +148,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4031538560658974937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cd1c3f34364e4d48ab462eeaa17307c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5641a3923ddf2ea48bd6743d56c5678b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 8
+  gravity: 3
   damageRadius: 0.15
   whatIsGround:
     serializedVersion: 2

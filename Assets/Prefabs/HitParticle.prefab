@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4676100584005117772}
   - component: {fileID: 4676100584005117771}
   - component: {fileID: 4676100584005117770}
-  - component: {fileID: 7108138491103411111}
+  - component: {fileID: 4367544327443345189}
   m_Layer: 0
   m_Name: HitParticle
   m_TagString: Untagged
@@ -106,7 +106,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7108138491103411111
+--- !u!114 &4367544327443345189
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,6 +115,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4676100584005117769}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f2b4df946e8b4d42b978ac3b1cf7069, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a80112fba72c3c4eb8921339761dd43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
