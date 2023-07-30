@@ -17,4 +17,4 @@ Here are some of the game development gems I've picked up along the way:
 I can't wait to share the full version of the game, complete with GitHub and itch.io playable links, in the upcoming days. Stay tuned for an adventure you won't want to miss! 🚀💫
 
 ### Temporary Video Showcasing the GamePlay
-https://youtu.be/k4qwUpfqUOw
+https://youtu.be/m3v-0ck-cak
